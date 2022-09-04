@@ -31,12 +31,59 @@
 </template>
 
 <script>
+//import obtenerEmpleado from "@/helpers/procesarEmpleado";
+/*import insertEmpleado from "@/helpers/procesarEmpleado";
+import obtenerEmpleado from "@/helpers/procesarEmpleado";
+import actualizarEmpleado from "@/helpers/procesarEmpleado";
+import borrarEmpleado from "@/helpers/procesarEmpleado";*/
+import {obtenerEmpleado, borrarEmpleado, actualizarEmpleado, insertEmpleado} from "@/helpers/procesarEmpleado";
 export default {
-  name: 'HelloWorld',
+  name: "HelloWorld",
   props: {
-    msg: String
+    msg: String,
+  },
+  methods: {
+    async buscar(id) {
+      await obtenerEmpleado(id);
+    },
+    async eliminar(id){
+      await borrarEmpleado(id);
+    },
+    async insertar(body){
+      await insertEmpleado(body);
+    },
+    async actualizar(body){
+      await actualizarEmpleado(body);
+    }
+  },
+  mounted(){
+    
+      const empl= {
+      'id':0,
+      'nombre':'leonardo',
+      'apellido':'suniga',
+      'fechaNacimiento':'1999-13-12T00:00:00',
+      'salario':20};
+    
+    this.insertar(empl);
+    this.buscar(0);
+    const empl2= {
+      'id':0,
+      'nombre':'Actualizando',
+      'apellido':'suniga',
+      'fechaNacimiento':'1999-13-12T00:00:00',
+      'salario':20};
+      this.actualizar(empl2);
+      const empl3= {
+      'id':1,
+      'nombre':'Pa Eliminar',
+      'apellido':'suniga',
+      'fechaNacimiento':'1999-13-12T00:00:00',
+      'salario':20};
+      this.insertar(empl3);
+      this.eliminar(1);
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
