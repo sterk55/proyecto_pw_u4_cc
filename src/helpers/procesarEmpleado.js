@@ -1,6 +1,6 @@
 
 import axios from 'axios'
-const obtenerEmpleado = async (id) => {
+export const obtenerEmpleado = async (id) => {
     return await obtenerEmpleadoAxios(id);
 }
 
@@ -13,7 +13,7 @@ const obtenerEmpleado = async (id) => {
 
 
 //GET
-const obtenerEmpleadoAxios = async(id) => {
+export const obtenerEmpleadoAxios = async(id) => {
     const data = axios.get(`http://localhost:8085/APINomina/V1/empleados/${id}`).then(r => r.data)
     console.log(data)
     return data
@@ -21,33 +21,33 @@ const obtenerEmpleadoAxios = async(id) => {
 
 
 //POST
-const insertarEmpleadoAxios = async(body1) => {
+export const insertarEmpleadoAxios = async(body1) => {
     axios.post(`http://localhost:8085/APINomina/V1/empleados`,body1)
 }
 
-const insertEmpleado = async(body) => {
+export const insertEmpleado = async(body) => {
     return await insertarEmpleadoAxios(body);
 }
 
 //PUT
-const actualizarEmpleadoAxios = async(body) => {
+export const actualizarEmpleadoAxios = async(body) => {
     const data = axios.put(`http://localhost:8085/APINomina/V1/empleados`,body).then( r=> r.data)
     console.log(data)
     return data
 }
 
-const actualizarEmpleado = async(body) => {
+export const actualizarEmpleado = async(body) => {
     return await actualizarEmpleadoAxios(body);
 }
 
 //DELETE
-const borrarEmpleadoAxios = async(id) => {
+export const borrarEmpleadoAxios = async(id) => {
     const data = axios.delete(`http://localhost:8085/APINomina/V1/empleados/${id}`).then(r => r.data)
     console.log(data)
     return data
 }
 
-const borrarEmpleado = async(id) => {
+export const borrarEmpleado = async(id) => {
     return await borrarEmpleadoAxios(id);
 }
 
